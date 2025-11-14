@@ -9,14 +9,14 @@ This architecture is 100% free by combining the generous free tiers of GitHub Ac
 ## 🚀 The Stack
 
 * **Scheduler:** GitHub Actions (running every 8 minutes)
-* **Runner:** GitHub Actions (Standard Ubuntu runner)
+* **Runner:** GitHub Actions (Standard Ubuntu runner) 2000 minutes using free tier.
 * **Logic:** A single `check.sh` Bash script
 * **Tools:** `curl` and `jq` (pre-installed on the runner)
 * **Notifier:** Mailjet (6,000 emails/month, 200/day free plan)
 
 ## 💡 How It Works
 
-1.  **Schedule:** The `.github/workflows/wanikani-check.yml` file wakes up **every 8 minutes**. (This stays safely under Mailjet's 200 email/day limit).
+1.  **Schedule:** The `.github/workflows/wanikani-check.yml` file wakes up **every 8 minutes** and takes around 10-15 seconds to finish. (This stays safely under Mailjet's 200 email/day limit and GitHub actions 2000 minutes per month).
 2.  **Checkout:** The workflow checks out your repository's code.
 3.  **Set Permissions:** It runs `chmod +x check.sh` to ensure the script has permission to execute.
 4.  **Execute:** It runs the `check.sh` script, passing in your API keys and email settings as environment variables.
